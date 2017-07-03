@@ -9,13 +9,6 @@ import { hasWebAudioAPI } from '../unit/music'
 const { fromJS, List } = require('immutable')
 Vue.use(Vuex)
 
-let ttt = lastRecord && !isNaN(parseInt(lastRecord.speedRun, 10))
-  ? parseInt(lastRecord.speedRun, 10)
-  : 1
-if (ttt < 1 || ttt > 6) {
-  ttt = 1
-}
-
 let clearLinesInitState = lastRecord &&
   !isNaN(parseInt(lastRecord.clearLines, 10))
   ? parseInt(lastRecord.clearLines, 10)
@@ -109,7 +102,6 @@ if (startLinesInitState < 0 || startLinesInitState > 10) {
 const resetInitState = lastRecord && lastRecord.reset
   ? !!lastRecord.reset
   : false
-// const resetInitState=false
 const state = {
   music: musicInitState,
   pause: pauseInitState,
@@ -136,12 +128,8 @@ const state = {
     pause: false
   },
 
-  // next: getNextType(),
-  // move_block: '',
   lock: lockInitState,
-  // MUSIC: musicInitState,
   focus: isFocus()
-  // -----分割线-----
 }
 export default new Vuex.Store({
   state,
